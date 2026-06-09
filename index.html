@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Premium Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3>उषा Online Test (Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+           const questions = [
+                // SECTION - उषा (शमशेर बहादुर सिंह) - Hindi 12th Objective Questions
+                { q: "1. शमशेर बहादुर सिंह ने कौन-सी कविता लिखी है ?", opt: ["पुत्र वियोग", "उषा", "हार-जीत", "अधिनायक"], ans: 1 },
+                { q: "2. शमशेर बहादुर सिंह को हिन्दी साहित्य में क्या कहा जाता है ?", opt: ["कवि शिरोमणि", "कवि रत्न", "कवियों के कवि", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "3. 'कवियों के कवि' किसे कहा जाता है ?", opt: ["रघुवीर सहाय को", "जयशंकर प्रसाद को", "मुक्तिबोध को", "शमशेर बहादुर सिंह को"], ans: 3 },
+                { q: "4. शमशेर बहादुर सिंह की 'प्रतिनिधि कविताएँ' नामक काव्य कृति का सम्पादन किसने किया है ?", opt: ["डॉ० काशीनाथ सिंह", "डॉ० दूधनाथ सिंह", "डॉ० नामवर सिंह", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "5. उषा का जादू कब टूट जाता है ?", opt: ["सूर्योदय होने पर", "दोपहर होने पर", "अंधेरा होने पर", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "6. शमशेर बहादुर सिंह ने किस कोश का सम्पादन किया ?", opt: ["हिन्दी-अंग्रेजी कोश", "उर्दू-अंग्रेजी कोश", "उर्दू-हिन्दी कोश", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "7. शमशेर बहादुर सिंह किस साहित्यकार के समकालीन थे ?", opt: ["प्रेमचन्द", "जयशंकर प्रसाद", "कबीरदास", "नागार्जुन"], ans: 3 },
+                { q: "8. शमशेर बहादुर सिंह की रचना किस सप्तक में आनी शुरू हुई ?", opt: ["पहला सप्तक", "दूसरा सप्तक", "तीसरा सप्तक", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "9. शमशेर बहादुर सिंह की कौन-सी रचना नहीं है ?", opt: ["दूसरा सप्तक", "उदिता", "टूटी हुई बिखरी हुई", "सतह से उठता आदमी"], ans: 3 },
+                { q: "10. शमशेर बहादुर सिंह की कौन-सी रचना है ?", opt: ["इन्द्रजाल", "मुकुल", "उदिता", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "11. शमशेर बहादुर सिंह ने 1978 में किस देश की यात्रा की ?", opt: ["संयुक्त राज्य अमेरिका", "सोवियत रूस", "फ्रांस", "नेपाल"], ans: 1 },
+                { q: "12. शमशेर बहादुर सिंह ने किस स्थान से बी० ए० किया ?", opt: ["इलाहाबाद", "दिल्ली", "बनारस", "कानपुर"], ans: 0 },
+                { q: "13. शमशेर बहादुर सिंह का सम्बन्ध किस विश्वविद्यालय से रहा है ?", opt: ["इलाहाबाद विश्वविद्यालय, इलाहाबाद", "गढ़वाल विश्वविद्यालय, उत्तराखंड", "विक्रम विश्वविद्यालय, उज्जैन", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "14. 'उषा' कविता में प्रातः काल को किसके समान बताया गया है ?", opt: ["लाल कमल के समान", "नीले शंख के समान", "नीली चादर के समान", "नीले सागर के समान"], ans: 1 },
+                { q: "15. 'सुकून की तलाश' क्या है ?", opt: ["उपन्यास", "कहानी", "गज़लें", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "16. प्रकृति वर्णन से सम्बन्धित कविता है –", opt: ["गाँव का घर", "उषा", "साकेत", "हार-जीत"], ans: 1 },
+                { q: "17. 'दूसरा सप्तक' का प्रकाशन वर्ष है —", opt: ["1950 ई०", "1957 ई०", "1952 ई०", "1954 ई०"], ans: 1 },
+                { q: "18. शमशेर बहादुर सिंह का जन्म कब हुआ था ?", opt: ["13 जनवरी, 1911 को", "23 फरवरी, 1911 को", "13 मार्च, 1911 को", "22 अप्रैल, 1911 को"], ans: 0 },
+                { q: "19. शमशेर बहादुर सिंह की पत्नी का नाम क्या है ?", opt: ["धर्म देवी", "रीता देवी", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "20. कौन-सी कृति शमशेर बहादुर सिंह की है ?", opt: ["गुलामी का नशा", "मुकुल", "काल तुझसे होड़ है मेरी", "विशाख"], ans: 2 },
+                { q: "21. कौन-सी कृति शमशेर बहादुर सिंह की नहीं है ?", opt: ["इतने पास अपने", "उदिता", "टूटी हुई बिखरी हुई", "भारत : इतिहास और संस्कृति"], ans: 3 },
+                { q: "22. 'सुकून की तलाश' क्या है ?", opt: ["गज़लों का संग्रह", "उपन्यास", "कहानी", "निबंध संग्रह"], ans: 0 },
+                { q: "23. प्रभातकालीन आकाश कैसा है ?", opt: ["कमल के रंग जैसा", "नीले शंख जैसा", "काली सिल के जैसा", "उजली सीप के जैसा"], ans: 1 },
+                { q: "24. किसका जादू टूटता है ?", opt: ["उषा का", "संध्या का", "रजनी का", "नायिका के सौंदर्य का"], ans: 0 },
+                { q: "25. 'उषा' शीर्षक कविता के कवि हैं –", opt: ["पंत", "निराला", "ज्ञानेंद्रपति", "शमशेर बहादुर सिंह"], ans: 3 },
+                { q: "26. 'चुका भी नहीं हूँ मैं' के रचयिता कौन हैं ?", opt: ["त्रिलोचन", "नागार्जुन", "शमशेर बहादुर सिंह", "मुक्तिबोध"], ans: 2 },
+                { q: "27. 'सुकून की तलाश' किसकी रचना है ?", opt: ["दुष्यंत कुमार की", "गालिब की", "इकबाल की", "शमशेर बहादुर सिंह की"], ans: 2 },
+                { q: "28. शमशेर बहादुर सिंह का जन्म कहाँ हुआ था ?", opt: ["देहरादून में", "पटना में", "लखनऊ में", "दिल्ली में"], ans: 0 },
+                { q: "29. उषा का जादू कब टूटता है ?", opt: ["सपने में", "विस्मृति में", "सूर्योदय होने पर", "ध्यान में"], ans: 2 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
